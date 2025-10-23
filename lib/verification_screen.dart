@@ -81,9 +81,10 @@ class VerificationScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 87, right: 87),
                   child: ElevatedButton(
                     onPressed: () {
-                     GenericDialog.showModal(context:context,
-                       successMessage: "Your account has been \ncreated and sent for \napproval",
-                     );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen(showDialogOnLoad: true)),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF004CFF),

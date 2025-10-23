@@ -1,13 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:salon_app/forget_password.dart';
+import 'package:salon_app/utils/generic_dialog.dart';
 import 'package:salon_app/verification_screen.dart';
 import 'package:salon_app/widget/generic_button.dart';
+import 'package:salon_app/widget/generic_text_button.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  final bool showDialogOnLoad;
+
+  const LoginScreen({super.key, this.showDialogOnLoad = false});
 
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (widget.showDialogOnLoad) {
+      Future.delayed(const Duration(milliseconds: 800), () {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _showWelcomeDialog();
+        });
+      });
+    }
+  }
+
+  void _showWelcomeDialog() {
+    GenericDialog();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -117,7 +143,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 6),
                   GenericTextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgetPassword(),
+                        ),
+                      );
+                    },
                     buttonText: "Forget Password",
                   ),
                   SizedBox(height: 46),
