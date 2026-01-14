@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:salon_app/forget_password_code.dart';
 import 'package:salon_app/login_screen.dart';
 import 'package:salon_app/widget/generic_button.dart';
 import 'package:salon_app/widget/generic_text_button.dart';
@@ -77,7 +78,17 @@ class ForgetPassword extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 41.7),
-                  GenericButton(onPressed: () {}, buttonText: "Reset Password"),
+                  GenericButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgetPasswordCode(),
+                        ),
+                      );
+                    },
+                    buttonText: "Reset Password",
+                  ),
                   SizedBox(height: 14),
                   Center(
                     child: GenericTextButton(
